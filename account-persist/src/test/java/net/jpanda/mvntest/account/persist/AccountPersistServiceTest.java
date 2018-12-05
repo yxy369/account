@@ -15,8 +15,8 @@ public class AccountPersistServiceTest {
 	@Before
 	public void prepare() throws Exception{
 		File persistDataFile=new File("target/test-classes/persist-data.xml");
-		if(persistDataFile.exists())
-			persistDataFile.delete();
+		/*if(persistDataFile.exists())
+			persistDataFile.delete();*/
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("account-persist.xml");
 		service=(AccountPersistService)ctx.getBean("accountPersistService");
 		
@@ -39,7 +39,7 @@ public class AccountPersistServiceTest {
 		assertEquals("Juven Xu",account.getName());
 		assertEquals("juven@test.com",account.getEmail());
 		assertEquals("123456",account.getPassword());
-		assertTrue(account.isActivated());
+		assertTrue(!account.isActivated());
 	}
 
 }
